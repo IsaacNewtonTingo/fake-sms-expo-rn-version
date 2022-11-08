@@ -34,6 +34,7 @@ export default function Home({ navigation }) {
 
   const [code, setCode] = useState("");
   const [amount, setAmount] = useState("70.00");
+  const [name, setName] = useState("VYBE CATERERS");
   const [account, setAccount] = useState("006");
   const [balance, setBalance] = useState("1045.00");
   const [createdAt, setCreatedAt] = useState("");
@@ -64,6 +65,7 @@ export default function Home({ navigation }) {
     setIsPosting(true);
     await setDoc(doc(firestore, "Expo-Messages", "MPESA"), {
       code,
+      name: name.toUpperCase(),
       amount,
       account,
       balance,
@@ -94,16 +96,14 @@ export default function Home({ navigation }) {
       masks.myDate = "dd/mm/yy";
 
       setMessage(
-        `${messageData.code} Confirmed. Ksh${
-          messageData.amount
-        } sent to ZURI GENESIS CO LTD for account ${
-          messageData.account
-        } on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
+        `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
+          messageData.name
+        }. on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
           messageData.createdAt,
           "shortTime"
-        )} New M-PESA balance is Ksh${
+        )}.New M-PESA balance is Ksh${
           messageData.balance
-        }. Transaction cost, Ksh0.00.Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click https://bit.ly/3LQTXIT`
+        }. Transaction cost, Ksh0.00. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click https://bit.ly/3LQTXIT`
       );
     } else {
       console.log("No such document!");
@@ -209,6 +209,14 @@ export default function Home({ navigation }) {
 
             <TextInput
               style={styles.modalInput}
+              placeholder="Enter name"
+              value={name}
+              placeholderTextColor="gray"
+              onChangeText={setName}
+            />
+
+            <TextInput
+              style={styles.modalInput}
               placeholder="Enter code"
               value={code}
               placeholderTextColor="gray"
@@ -259,7 +267,7 @@ export default function Home({ navigation }) {
       </Modal>
 
       <TouchableOpacity
-        onPress={() => setShowModal(true)}
+        // onPress={() => setShowModal(true)}
         style={styles.newChat}
       >
         <Text style={styles.newChatText}>+</Text>
@@ -362,7 +370,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     width: 350,
-    height: 400,
+    paddingVertical: 40,
     justifyContent: "center",
     shadowColor: "white",
     shadowOffset: {
