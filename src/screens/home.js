@@ -199,13 +199,13 @@ export default function Home({ navigation }) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.subHeading}>Pay Zuri</Text>
-            <TextInput
+            {/* <TextInput
               style={styles.modalInput}
               placeholder="Enter account number"
               value={account}
               placeholderTextColor="gray"
               onChangeText={setAccount}
-            />
+            /> */}
 
             <TextInput
               style={styles.modalInput}
