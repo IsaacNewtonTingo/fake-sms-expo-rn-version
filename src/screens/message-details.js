@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#14141f",
     padding: 20,
     paddingBottom: 100,
+    flexGrow: 1,
   },
   messageContainer: {
     flexDirection: "row",

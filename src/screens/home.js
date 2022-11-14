@@ -218,6 +218,7 @@ export default function Home({ navigation }) {
               value={code}
               placeholderTextColor="gray"
               onChangeText={setCode}
+              keyboardType="number-pad"
             />
 
             <TextInput
