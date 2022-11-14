@@ -10,6 +10,7 @@ import {
   Modal,
   Alert,
   ActivityIndicator,
+  Linking,
 } from "react-native";
 const messages = require("../data/default-messages.json");
 
@@ -34,12 +35,17 @@ export default function Home({ navigation }) {
 
   const [code, setCode] = useState("");
   const [amount, setAmount] = useState("70.00");
-  const [name, setName] = useState("VYBE CATERERS");
+  const [name, setName] = useState("ZURI GENESIS CO LTD");
   const [account, setAccount] = useState("006");
   const [balance, setBalance] = useState("1045.00");
+  const [transactionCost, setTransactionCost] = useState("0.00");
   const [createdAt, setCreatedAt] = useState("");
 
   const [message, setMessage] = useState("");
+
+  const fiftyBob = 50;
+  const zeroBob = 0;
+  const twentyThreeBob = 23;
 
   useEffect(() => {
     getMessages();
@@ -93,40 +99,28 @@ export default function Home({ navigation }) {
 
       setCreatedAt(messageData.createdAt);
       setCode(messageData.code);
+      setAmount(messageData.amount);
       masks.myDate = "dd/mm/yy";
 
       setMessage(
         `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
           messageData.name
-        }. on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
+        } for account ${messageData.account} on ${dateFormat(
+          messageData.createdAt,
+          "myDate"
+        )} at ${dateFormat(
           messageData.createdAt,
           "shortTime"
-        )}.New M-PESA balance is Ksh${
-          messageData.balance
-        }. Transaction cost, Ksh0.00. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click https://bit.ly/3LQTXIT`
+        )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
+          messageData.amount === fiftyBob.toFixed(2)
+            ? zeroBob.toFixed(2)
+            : twentyThreeBob.toFixed(2)
+        }. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click`
       );
     } else {
       console.log("No such document!");
     }
   }
-
-  //   if (loadingData == true) {
-  //     return (
-  //       <View
-  //         style={{
-  //           flex: 1,
-  //           backgroundColor: "black",
-  //           alignItems: "center",
-  //           justifyContent: "center",
-  //         }}
-  //       >
-  //         <ActivityIndicator color="white" size="large" />
-  //         <Text style={{ color: "white", fontWeight: "700", marginTop: 10 }}>
-  //           Loading data
-  //         </Text>
-  //       </View>
-  //     );
-  //   }
 
   return (
     <View style={styles.container}>
@@ -166,6 +160,9 @@ export default function Home({ navigation }) {
                   listMessage: item.message,
                   listIcon: item.icon,
 
+                  code: code,
+                  amount: amount,
+
                   time: createdAt,
                   message: message,
                 });
@@ -199,21 +196,21 @@ export default function Home({ navigation }) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.subHeading}>Pay Zuri</Text>
-            {/* <TextInput
+            <TextInput
               style={styles.modalInput}
               placeholder="Enter account number"
               value={account}
               placeholderTextColor="gray"
               onChangeText={setAccount}
-            /> */}
+            />
 
-            <TextInput
+            {/* <TextInput
               style={styles.modalInput}
               placeholder="Enter name"
               value={name}
               placeholderTextColor="gray"
               onChangeText={setName}
-            />
+            /> */}
 
             <TextInput
               style={styles.modalInput}
@@ -229,6 +226,7 @@ export default function Home({ navigation }) {
               value={amount}
               placeholderTextColor="gray"
               onChangeText={(text) => setAmount(text)}
+              keyboardType="number-pad"
             />
 
             {isPosting == false ? (
