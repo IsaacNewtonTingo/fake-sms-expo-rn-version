@@ -150,7 +150,40 @@ export default function MessageDetails({ route, navigation }) {
           </View>
         </>
       ) : (
-        <></>
+        <>
+          <View style={styles.messageContainer}>
+            <Image
+              style={styles.icon}
+              source={{ uri: route.params.listIcon }}
+            />
+
+            <View>
+              <Text style={styles.timeText}>{route.params.listTime}</Text>
+
+              <View style={styles.messageItem}>
+                <Text style={styles.messageText}>
+                  {route.params.listMessage}
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <TextInput
+            placeholder="Text message"
+            placeholderTextColor="gray"
+            style={{
+              position: "absolute",
+              bottom: 10,
+              borderWidth: 1,
+              borderColor: "gray",
+              width: "100%",
+              alignSelf: "center",
+              height: 40,
+              borderRadius: 20,
+              paddingHorizontal: 20,
+            }}
+          />
+        </>
       )}
     </ScrollView>
   );

@@ -44,6 +44,7 @@ export default function Home({ navigation }) {
   const [message, setMessage] = useState("");
 
   const fiftyBob = 50;
+  const hundredBob = 100;
   const zeroBob = 0;
   const twentyThreeBob = 23;
 
@@ -112,7 +113,7 @@ export default function Home({ navigation }) {
           messageData.createdAt,
           "shortTime"
         )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
-          messageData.amount === fiftyBob.toFixed(2)
+          parseInt(messageData.amount) <= hundredBob.toFixed(2)
             ? zeroBob.toFixed(2)
             : twentyThreeBob.toFixed(2)
         }. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click`
