@@ -103,7 +103,7 @@ export default function MessageDetails({ route, navigation }) {
                   {route.params.listName === "MPESA"
                     ? route.params.message
                     : route.params.listMessage}{" "}
-                  <B>https://bit.ly/3LQTXIT</B>
+                  <B>https://mpesaapp.page.link/ggGV</B> & get 500MB.
                 </Text>
               </View>
             </View>

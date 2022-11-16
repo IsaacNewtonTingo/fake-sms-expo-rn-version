@@ -116,7 +116,7 @@ export default function Home({ navigation }) {
           parseInt(messageData.amount) <= hundredBob.toFixed(2)
             ? zeroBob.toFixed(2)
             : twentyThreeBob.toFixed(2)
-        }. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. Click`
+        }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
       );
     } else {
       console.log("No such document!");

@@ -19,7 +19,7 @@
       "developmentClient": true
     },
     "production": {
-      "channel": "production"
+      "channel": "zuri"
     }
   },
   "submit": {
