@@ -46,6 +46,7 @@ export default function Home({ navigation }) {
   const fiftyBob = 50;
   const hundredBob = 100;
   const zeroBob = 0;
+  const twoBob = 2;
   const twentyThreeBob = 23;
 
   useEffect(() => {
@@ -114,7 +115,7 @@ export default function Home({ navigation }) {
           "shortTime"
         )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
           parseInt(messageData.amount) <= hundredBob.toFixed(2)
-            ? zeroBob.toFixed(2)
+            ? twoBob.toFixed(2)
             : twentyThreeBob.toFixed(2)
         }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
       );
