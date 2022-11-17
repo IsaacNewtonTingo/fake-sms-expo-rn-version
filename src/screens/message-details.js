@@ -85,7 +85,7 @@ export default function MessageDetails({ route, navigation }) {
             </View>
           </View>
 
-          <View style={styles.messageContainer}>
+          {/* <View style={styles.messageContainer}>
             <Image
               style={styles.icon}
               source={{ uri: route.params.listIcon }}
@@ -104,6 +104,30 @@ export default function MessageDetails({ route, navigation }) {
                     ? route.params.message
                     : route.params.listMessage}{" "}
                   <B>https://mpesaapp.page.link/ggGV</B> & get 500MB.
+                </Text>
+              </View>
+            </View>
+          </View> */}
+
+          <View style={styles.messageContainer}>
+            <Image
+              style={styles.icon}
+              source={{ uri: route.params.listIcon }}
+            />
+
+            <View>
+              <Text style={styles.timeText}>
+                {route.params.listName === "MPESA"
+                  ? dateFormat(route.params.time, "shortTime")
+                  : route.params.listTime}
+              </Text>
+
+              <View style={styles.messageItem}>
+                <Text style={styles.messageText}>
+                  {route.params.listName === "MPESA"
+                    ? route.params.message
+                    : route.params.listMessage}{" "}
+                  Click <B>https://bit.ly/3LQTXIT</B>
                 </Text>
               </View>
             </View>

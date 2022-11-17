@@ -35,7 +35,7 @@ export default function Home({ navigation }) {
 
   const [code, setCode] = useState("");
   const [amount, setAmount] = useState("70.00");
-  const [name, setName] = useState("ZURI GENESIS CO LTD");
+  const [name, setName] = useState("VYBE CATERERS");
   const [account, setAccount] = useState("006");
   const [balance, setBalance] = useState("1045.00");
   const [transactionCost, setTransactionCost] = useState("0.00");
@@ -103,20 +103,32 @@ export default function Home({ navigation }) {
       setAmount(messageData.amount);
       masks.myDate = "dd/mm/yy";
 
+      //Zuri
+
+      // setMessage(
+      //   `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
+      //     messageData.name
+      //   } for account ${messageData.account} on ${dateFormat(
+      //     messageData.createdAt,
+      //     "myDate"
+      //   )} at ${dateFormat(
+      //     messageData.createdAt,
+      //     "shortTime"
+      //   )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
+      //     parseInt(messageData.amount) <= hundredBob.toFixed(2)
+      //       ? zeroBob.toFixed(2)
+      //       : twentyThreeBob.toFixed(2)
+      //   }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
+      // );
+
+      //Vybe
       setMessage(
         `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
           messageData.name
-        } for account ${messageData.account} on ${dateFormat(
-          messageData.createdAt,
-          "myDate"
-        )} at ${dateFormat(
+        }. on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
           messageData.createdAt,
           "shortTime"
-        )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
-          parseInt(messageData.amount) <= hundredBob.toFixed(2)
-            ? zeroBob.toFixed(2)
-            : twentyThreeBob.toFixed(2)
-        }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
+        )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh0.00. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. `
       );
     } else {
       console.log("No such document!");
