@@ -105,31 +105,30 @@ export default function Home({ navigation }) {
 
       //Zuri
 
+      setMessage(
+        `${messageData.code} Confirmed. Ksh${
+          messageData.amount
+        } sent to ZURI GENESIS CO LTD for account ${
+          messageData.account
+        } on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
+          messageData.createdAt,
+          "shortTime"
+        )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
+          parseInt(messageData.amount) <= hundredBob.toFixed(2)
+            ? zeroBob.toFixed(2)
+            : twentyThreeBob.toFixed(2)
+        }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
+      );
+
+      // //Vybe
       // setMessage(
       //   `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
       //     messageData.name
-      //   } for account ${messageData.account} on ${dateFormat(
-      //     messageData.createdAt,
-      //     "myDate"
-      //   )} at ${dateFormat(
+      //   }. on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
       //     messageData.createdAt,
       //     "shortTime"
-      //   )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh${
-      //     parseInt(messageData.amount) <= hundredBob.toFixed(2)
-      //       ? zeroBob.toFixed(2)
-      //       : twentyThreeBob.toFixed(2)
-      //   }. Amount you can transact within the day is 299,775.00. Download M-PESA app on `
+      //   )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh0.00. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. `
       // );
-
-      //Vybe
-      setMessage(
-        `${messageData.code} Confirmed. Ksh${messageData.amount} sent to ${
-          messageData.name
-        }. on ${dateFormat(messageData.createdAt, "myDate")} at ${dateFormat(
-          messageData.createdAt,
-          "shortTime"
-        )}.New M-PESA balance is Ksh0.00. Transaction cost, Ksh0.00. Amount you can transact within the day is 299,775.00. Pay with M-PESA GlobalPay virtual Visa card linked to MPESA wallet. `
-      );
     } else {
       console.log("No such document!");
     }
@@ -239,7 +238,6 @@ export default function Home({ navigation }) {
               value={amount}
               placeholderTextColor="gray"
               onChangeText={(text) => setAmount(text)}
-              keyboardType="number-pad"
             />
 
             {isPosting == false ? (
